@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "func.h"
+#include "monty.h"
 
 /**
  * process - Function that process instructions and calls matching functn

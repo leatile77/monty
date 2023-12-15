@@ -1,4 +1,4 @@
-#include "func.h"
+#include "monty.h"
 
 /**
  * _strcpy - Function that copies a string

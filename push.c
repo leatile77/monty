@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "func.h"
+#include "monty.h"
 
 /**
  * push - Function that adds a new element at the top of stack
