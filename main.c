@@ -21,7 +21,7 @@ char line[BUFF];
 char *token;
 int fd;
 stack_t *stack;
-instruction_t validInstruct[3];
+instruction_t validInstruct[4];
 size_t i, j, len, num_lines;
 
 len = 0;
@@ -31,10 +31,10 @@ validInstruct[0].opcode = "push";
 validInstruct[0].f = push;
 validInstruct[1].opcode = "pall";
 validInstruct[1].f = pall;
-/*validInstruct[2].opcode = "pall";
-validInstruct[2].f = pall;*/
-validInstruct[2].opcode = NULL;
-validInstruct[2].f = NULL;
+validInstruct[2].opcode = "pint";
+validInstruct[2].f = pint;
+validInstruct[3].opcode = NULL;
+validInstruct[3].f = NULL;
 
 if (argc != 2)
 {
@@ -48,6 +48,7 @@ if (fd == -1)
 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 exit(EXIT_FAILURE);
 }
+
 
 while (read(fd, line, BUFF) > 0)
 {
@@ -72,7 +73,6 @@ num_lines++;
 token = strtok(NULL, "'\n'$");
 }
 }
-
 close(fd);
 
 stack = NULL;

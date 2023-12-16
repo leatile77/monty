@@ -43,6 +43,7 @@ char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 char *_strdup(char *str);
 
 #endif
