@@ -21,7 +21,7 @@ char line[BUFF];
 char *token;
 int fd;
 stack_t *stack;
-instruction_t validInstruct[4];
+instruction_t validInstruct[8];
 size_t i, j, len, num_lines;
 
 len = 0;
@@ -33,8 +33,16 @@ validInstruct[1].opcode = "pall";
 validInstruct[1].f = pall;
 validInstruct[2].opcode = "pint";
 validInstruct[2].f = pint;
-validInstruct[3].opcode = NULL;
-validInstruct[3].f = NULL;
+validInstruct[3].opcode = "pop";
+validInstruct[3].f = pop;
+validInstruct[4].opcode = "swap";
+validInstruct[4].f = swap;
+validInstruct[5].opcode = "add";
+validInstruct[5].f = add;
+validInstruct[6].opcode = "nop";
+validInstruct[6].f = nop;
+validInstruct[7].opcode = NULL;
+validInstruct[7].f = NULL;
 
 if (argc != 2)
 {
@@ -49,7 +57,6 @@ fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 exit(EXIT_FAILURE);
 }
 
-
 while (read(fd, line, BUFF) > 0)
 {
 len = strlen(line);
@@ -63,12 +70,14 @@ while (token)
 {
 lines[num_lines] = _strdup(token);
 token = "";
+ 
 if (lines[num_lines] == NULL)
 {
 fprintf(stderr, "Error: malloc failed\n");
 close(fd);
 exit(EXIT_FAILURE);
 }
+
 num_lines++;
 token = strtok(NULL, "'\n'$");
 }

@@ -5,7 +5,7 @@
 /**
  * push - Function that adds a new element at the top of stack
  * @stack: list to add element in
- * @line_number: Line number(position) to add element in (unused)
+ * @line_number: Line number in file
  *
  * Return: void
  */
@@ -16,22 +16,13 @@ stack_t *tmp, *new;
 char *arg;
 
 tmp = *stack;
-(void)line_number;
 
-new = malloc(sizeof(stack_t));
-if (new == NULL)
-{
-fprintf(stderr, "Error: malloc failed\n");
-exit(EXIT_FAILURE);
-}
-
-if (global == NULL || *global == '\0')
+if (global == NULL ||*global == '\0')
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
-free(new);
 exit(EXIT_FAILURE);
 }
-
+ 
 for (arg = global; *arg != '\0'; arg++)
 {
 if (*arg < '0' || *arg > '9')
@@ -39,6 +30,13 @@ if (*arg < '0' || *arg > '9')
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
+}
+
+new = malloc(sizeof(stack_t));
+if (new == NULL)
+{
+fprintf(stderr, "Error: malloc failed\n");
+exit(EXIT_FAILURE);
 }
 
 new->n = atoi(global);

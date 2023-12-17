@@ -5,7 +5,7 @@
 /**
  * pall - Function that prints all n members in a stack
  * @stack: stack / doubly linked list to print n from
- * @line_number: Line number to print (not used)
+ * @line_number: Line number from file (not used)
  *
  * Return: void
  */

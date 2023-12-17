@@ -39,11 +39,14 @@ typedef struct instruction_s
 
 void process(char *instr, stack_t **stack, unsigned int num_line, instruction_t *validInstruct);
 int _strcmp(char *s1, char *s2);
-char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 char *_strdup(char *str);
 
 #endif
