@@ -46,5 +46,6 @@ result = tmp2->n / tmp->n;
 tmp2->n = result;
 tmp2->prev = NULL;
 *stack = tmp2;
+free(tmp);
 }
 }
