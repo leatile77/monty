@@ -21,7 +21,7 @@ char line[BUFF];
 char *token;
 int fd;
 stack_t *stack;
-instruction_t validInstruct[8];
+instruction_t validInstruct[9];
 size_t i, j, len, num_lines;
 
 len = 0;
@@ -41,8 +41,10 @@ validInstruct[5].opcode = "add";
 validInstruct[5].f = add;
 validInstruct[6].opcode = "nop";
 validInstruct[6].f = nop;
-validInstruct[7].opcode = NULL;
-validInstruct[7].f = NULL;
+validInstruct[7].opcode = "sub";
+validInstruct[7].f = sub;
+validInstruct[8].opcode = NULL;
+validInstruct[8].f = NULL;
 
 if (argc != 2)
 {
@@ -66,17 +68,27 @@ line[len - 1] = '\0';
 }
 
 token = strtok(line, "'\n'$");
-while (token)
-{
-lines[num_lines] = _strdup(token);
-token = "";
- 
-if (lines[num_lines] == NULL)
+if (token == NULL)
 {
 fprintf(stderr, "Error: malloc failed\n");
 close(fd);
 exit(EXIT_FAILURE);
 }
+
+while (token != NULL)
+{
+lines[num_lines] = _strdup(token);
+token = "";
+ 
+/**
+*if (lines[num_lines] == NULL)
+*{
+*fprintf(stderr, "Error: malloc failed\n");
+*close(fd);
+*free(lines[num_lines]);
+*exit(EXIT_FAILURE);
+*}
+*/
 
 num_lines++;
 token = strtok(NULL, "'\n'$");
