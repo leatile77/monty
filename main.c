@@ -21,7 +21,7 @@ char line[BUFF];
 char *token;
 int fd;
 stack_t *stack;
-instruction_t validInstruct[10];
+instruction_t validInstruct[11];
 size_t i, j, len, num_lines;
 
 len = 0;
@@ -45,8 +45,10 @@ validInstruct[7].opcode = "sub";
 validInstruct[7].f = sub;
 validInstruct[8].opcode = "div";
 validInstruct[8].f = _div;
-validInstruct[9].opcode = NULL;
-validInstruct[9].f = NULL;
+validInstruct[9].opcode = "mul";
+validInstruct[9].f = mul;
+validInstruct[10].opcode = NULL;
+validInstruct[10].f = NULL;
 
 if (argc != 2)
 {
